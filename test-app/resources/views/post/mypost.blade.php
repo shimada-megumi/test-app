@@ -10,7 +10,11 @@
 
     {{-- 投稿一覧表示用のコード --}}
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {{$user->name}}さん、こんにちは！
+        @if (count($posts) == 0)
+        <p class="mt-4">
+        あなたはまだ投稿していません。
+        </p>
+        @else
         @foreach ($posts as $post)
             <div class="mx-4 sm:p-8">
                 <div class="mt-4">
@@ -33,14 +37,15 @@
                             @else
                             <span>コメントはまだありません。</span>
                             @endif
-                            <a href="{{route('post.show', $post)}}" style="color:white;">
-                                <x-primary-button class="float-right">コメントする</x-primary-button>
-                            </a>
+                                <x-primary-button class="float-right">
+                                    <a href="{{route('post.show', $post)}}" style="color:white;">コメントする</a>
+                                </x-primary-button>
                             <!-- ここまで  -->
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
+        @endif
     </div>
 </x-app-layout>

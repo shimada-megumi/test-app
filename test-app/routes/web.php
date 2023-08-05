@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 
 /*
@@ -18,7 +19,7 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('top');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,6 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('post/mypost', [PostController::class, 'mypost'])->name('post.mypost');
+Route::get('post/mycomment', [Postcontroller::class, 'mycomment'])->name('post.mycomment');
 Route::resource('post', PostController::class);
+
+Route::post('post/comment/store', [CommentController::class, 'store'])->name('comment.store');
 
 require __DIR__.'/auth.php';
