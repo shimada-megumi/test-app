@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 
 
 /*
@@ -36,5 +37,8 @@ Route::get('post/mycomment', [Postcontroller::class, 'mycomment'])->name('post.m
 Route::resource('post', PostController::class);
 
 Route::post('post/comment/store', [CommentController::class, 'store'])->name('comment.store');
+
+Route::get('contact/create', [ContactController::class, 'create'])->name('contact.create');
+Route::post('contact/store', [ContactController::class, 'store'])->name('contact.store');
 
 require __DIR__.'/auth.php';

@@ -103,6 +103,9 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    // 追加
+    'admin'=>env('MAIL_ADMIN', null),
+        
     /*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings

@@ -13,7 +13,7 @@
             </p>
             <div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in ">
                 {{-- ボタン設定 --}}
-                <button class="btnsetg">お問い合わせ</button>
+                <a href="{{ route('contact.create') }}"><button class="btnsetg">お問い合わせ</button></a>
                 <a href="{{route('register')}}"><button class="btnsetr">ご登録はこちら</button></a>
             </div>
         </div>
