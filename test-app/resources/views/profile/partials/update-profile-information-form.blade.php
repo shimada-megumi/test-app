@@ -9,12 +9,16 @@
         </p>
     </header>
 
+    @if(!isset($admin))
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
     <!-- entype="multipart/form-data"追加 -->
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+    @else
+    <form method="post" action="{{ route('profile.adupdate', $user) }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+    @endif
         @csrf
         @method('patch')
 
