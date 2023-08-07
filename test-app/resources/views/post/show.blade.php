@@ -45,7 +45,7 @@
                             <img src="{{ asset('storage/images/'.$post->image)}}" class="mx-auto" style="height:300px;">
                         @endif
                         <div class="text-sm font-semibold flex flex-row-reverse">
-                            <p> {{ $post->user->name}} • {{$post->created_at->diffForHumans()}}</p>
+                            <p> {{ $post->user->name??'削除されたユーザー'}} • {{$post->created_at->diffForHumans()}}</p>
                         </div>
                     </div>
                     <!-- コメント表示部分 -->
@@ -53,7 +53,7 @@
                     <div class="bg-white w-full  rounded-2xl px-10 py-8 shadow-lg mt-8 whitespace-pre-line">
                     {{$comment->body}}
                         <div class="text-sm font-semibold flex flex-row-reverse">
-                            <p class="float-left pt-4"> {{ $comment->user->name }} • {{$comment->created_at->diffForHumans()}}</p>
+                            <p class="float-left pt-4"> {{ $comment->user->name??'削除されたユーザー' }} • {{$comment->created_at->diffForHumans()}}</p>
                             <!-- アバター追加 -->
                             <span class="rounded-fill w-12 h-12">
                             <img src="{{asset('storage/avatar/'.($comment->user->avatar??'user_default.jpg'))}}">
