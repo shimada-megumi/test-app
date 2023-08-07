@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -103,6 +104,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        // 投稿に紐づいた画像を削除
+        if($post->image) {
+            Storage::disk('public')->delete('images/'.$post->image);
+        }
+        // ここまで追加
         $this->authorize('delete', $post);
         $post->comments()->delete();
         $post->delete();
