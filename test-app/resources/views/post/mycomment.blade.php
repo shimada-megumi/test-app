@@ -55,5 +55,8 @@
             </div>
         @endforeach
         @endif
+        <div class="mb-4">
+            {{ $comments->links() }}
+        </div>
     </div>
 </x-app-layout>

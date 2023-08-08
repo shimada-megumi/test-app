@@ -53,5 +53,8 @@
             </div>
         @endforeach
         @endif
+        <div class="mb-4">
+            {{ $posts->links() }}
+        </div>
     </div>
 </x-app-layout>

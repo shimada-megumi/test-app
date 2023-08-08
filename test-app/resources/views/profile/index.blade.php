@@ -41,6 +41,9 @@
                     </td>
                 </tr>
                 @endforeach
+                <div class="mb-4">
+                    {{ $users->links() }}
+                </div>
             </table>
         </div>
     </div>

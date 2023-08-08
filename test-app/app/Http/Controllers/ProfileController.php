@@ -17,7 +17,8 @@ class ProfileController extends Controller
 {
 
     public function index() {
-        $users = User::all();
+        // $users = User::all();
+        $users=User::latest('created_at')->paginate(10);
         return view('profile.index', compact('users'));
     }
     /**

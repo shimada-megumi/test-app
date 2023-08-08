@@ -118,13 +118,15 @@ class PostController extends Controller
 
     public function mypost() {
         $user=auth()->user()->id;
-        $posts=Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        // $posts=Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        $posts=Post::latest('created_at')->paginate(10);
         return view('post.mypost', compact('posts'));
     }
 
     public function mycomment() {
         $user=auth()->user()->id;
-        $comments=Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        // $comments=Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        $comments=Comment::latest('created_at')->paginate(10);
         return view('post.mycomment', compact('comments'));
     }
 }
