@@ -14,7 +14,7 @@
                     <th class="p-3 text-left text-white">名前</th>
                     <th class="p-3 text-left text-white">Email</th>
                     <th class="p-3 text-left text-white">アバター</th>
-                    <th class="p-3 text-left text-whith">編集</th>
+                    <th class="p-3 text-left text-white">編集</th>
                     <!-- 削除用 -->
                     <th class="p-3 text-left text-white">削除</th>
                 </tr>
