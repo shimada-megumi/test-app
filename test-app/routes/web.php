@@ -6,7 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RoleController;
-
+use App\Http\Controllers\NiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +52,10 @@ Route::middleware(['verified'])->group(function(){
         Route::patch('roles/{user}/attach', [RoleController::class, 'attach'])->name('role.attach');
         Route::patch('roles/{user}/detach', [RoleController::class, 'detach'])->name('role.detach');
     });
+
+    // いいねボタン
+    Route::get('/community/nice/{post}', [NiceController::class, 'nice'])->name('nice');
+    Route::get('/community/unnice/{post}', [NiceController::class, 'unnice'])->name('unnice');
 });
 
 require __DIR__.'/auth.php';

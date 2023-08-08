@@ -72,6 +72,30 @@
                         </form>
                     </div>
                     <!-- ここまで -->
+                    <!-- いいねボタン -->
+                            <span class="flex">
+                                <img src="{{ asset('storage/images/heart-pink.jpg') }}" width="30px">
+                                <!-- もし$niceがあれば＝ユーザーがいいねをしていたら -->
+                                @if($nice)
+                                <!-- いいね取り消し用のボタンを表示 -->
+                                <a href="{{ route('unnice', $post) }}" class="btn btn-success btn-sm">
+                                    <!-- いいねの数を表示 -->
+                                    <span class="badge">
+                                        いいね
+                                        {{ $post->nices->count() }}
+                                    </span>
+                                </a>
+                                @else
+                                <!-- まだユーザーがいいねをしていなければ、いいねボタンを表示 -->
+                                <a href="{{ route('nice', $post) }}" class="btn btn-secondary btn-sm">
+                                    <!-- いいねの数を表示 -->
+                                    <span class="badgeb">
+                                        いいね
+                                        {{ $post->nices->count() }}
+                                    </span>
+                                </a>
+                                @endif
+                            </span>
                 </div>
             </div>
         </div>

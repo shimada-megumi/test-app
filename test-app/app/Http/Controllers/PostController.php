@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nice;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class PostController extends Controller
         // $posts=Post::orderBy('created_at','desc')->get();
         $posts=Post::latest('created_at')->paginate(10);
         $user=auth()->user();
-        return view('post.index', compact('posts', 'user'));        
+        return view('post.index', compact('posts', 'user')); 
+        
+        
     }
 
     /**
@@ -59,7 +62,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show',compact('post'));    
+        $nice=Nice::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+        return view('post.show',compact('post', 'nice'));    
     }
 
     /**
