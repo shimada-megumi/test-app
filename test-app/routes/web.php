@@ -33,8 +33,8 @@ Route::post('contact/store', [ContactController::class, 'store'])->name('contact
 
  // ログイン後の通常のユーザー画面
 Route::middleware(['verified'])->group(function(){
-    Route::get('post/mypost', [PostController::class, 'mypost'])->name('post.mypost');
     Route::get('post/mycomment', [Postcontroller::class, 'mycomment'])->name('post.mycomment');
+    Route::get('post/mypost', [PostController::class, 'mypost'])->name('post.mypost');
     Route::resource('post', PostController::class);
     Route::post('post/comment/store', [CommentController::class, 'store'])->name('comment.store');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

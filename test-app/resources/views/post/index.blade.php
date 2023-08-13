@@ -40,6 +40,8 @@
                             <span>コメントはまだありません。</span>
                             @endif
                             <a href="{{route('post.show', $post)}}" style="color:white;">
+
+                            
                                 <x-primary-button class="float-right">コメントする</x-primary-button>
                             </a>
                             <!-- ここまで  -->

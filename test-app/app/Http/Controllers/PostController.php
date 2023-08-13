@@ -15,12 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
+
         // $posts=Post::orderBy('created_at','desc')->get();
         $posts=Post::latest('created_at')->paginate(10);
         $user=auth()->user();
-        return view('post.index', compact('posts', 'user')); 
         
-        
+        return view('post.index', compact('posts', 'user'));
     }
 
     /**
@@ -62,6 +62,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        // いいね機能
         $nice=Nice::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
         return view('post.show',compact('post', 'nice'));    
     }
@@ -123,14 +124,14 @@ class PostController extends Controller
     public function mypost() {
         $user=auth()->user()->id;
         // $posts=Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
-        $posts=Post::latest('created_at')->paginate(10);
+        $posts=Post::where('user_id', $user)->latest('created_at')->paginate(10);
         return view('post.mypost', compact('posts'));
     }
 
     public function mycomment() {
         $user=auth()->user()->id;
         // $comments=Comment::where('user_id', $user)->orderBy('created_at', 'desc')->get();
-        $comments=Comment::latest('created_at')->paginate(10);
+        $comments=Comment::where('user_id', $user)->latest('created_at')->paginate(10);
         return view('post.mycomment', compact('comments'));
     }
 }
